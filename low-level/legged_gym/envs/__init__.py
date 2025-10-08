@@ -30,9 +30,12 @@
 
 from .manip_loco.manip_loco import ManipLoco
 from .manip_loco.b1z1_config import B1Z1RoughCfg, B1Z1RoughCfgPPO
+from .manip_loco.manip_loco_flat import ManipLocoFlat
+from .manip_loco.b1z1_flat_config import B1Z1FlatCfg, B1Z1FlatCfgPPO
 
 import os
 
 from legged_gym.utils.task_registry import task_registry
 
 task_registry.register( "b1z1", ManipLoco, B1Z1RoughCfg(), B1Z1RoughCfgPPO(), 'b1z1')
+task_registry.register( "b1z1_flat", ManipLocoFlat, B1Z1FlatCfg(), B1Z1FlatCfgPPO(), 'b1z1_flat')

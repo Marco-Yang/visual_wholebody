@@ -106,8 +106,8 @@ class B1Z1RoughCfg( LeggedRobotCfg ):
         num_torques = 12 + 6
         action_delay = 3  # -1 for no delay
         num_gripper_joints = 1
-        num_proprio = 2 + 3 + 18 + 18 + 12 + 4 + 3 + 3 + 3 
-        num_priv = 5 + 1 + 12
+        num_proprio = 66  # 基础观测维度，不包含gait commands，加上gait commands后为71
+        num_priv = 18     # 从模型错误信息推断：priv_encoder期望18维
         history_len = 10
         num_observations = num_proprio * (history_len+1) + num_priv
         num_privileged_obs = None # if not None a priviledge_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise 
@@ -117,7 +117,7 @@ class B1Z1RoughCfg( LeggedRobotCfg ):
         teleop_mode = False # Overriden in teleop.py. When true, commands come from keyboard
         record_video = False
         stand_by = False
-        observe_gait_commands = False
+        observe_gait_commands = True  # 当设为True时，会自动添加5维，使总维度变为71
         frequencies = 2
 
     class init_state( LeggedRobotCfg.init_state ):

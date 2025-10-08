@@ -1,5 +1,5 @@
 env:
-  numEnvs: 10240
+  numEnvs: 1280
   numAgents: 1
   envSpacing: 5.0
   enableDebugVis: False
